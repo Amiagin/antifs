@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!--
+  Sample/Test AntTask
+-->
+<project name="sample" default="test" basedir=".">
+    <path id="custom.antlibs">
+        <pathelement path="bin\antifs.jar"/>
+    </path>
+    <taskdef resource="antifs.properties" classpathref="custom.antlibs"/>
+    <target name="test">
+        <if arg1="foo" arg2="wrong foo">
+            <isequal>
+                <echo message="is equal"/>
+            </isequal>
+            <else>
+                <if arg1="foo" arg2="foo">
+                    <isequal>
+                        <echo message="ohhh so foo"/>
+                    </isequal>
+                    <else>
+                        <echo message="not equal"/>
+                    </else>
+                </if>                
+            </else>
+        </if>
+        <if exist="file.something">
+            <then>
+                <echo message="delete some file"/>
+            </then>
+            <else>
+                <echo message="so what now?"/>
+            </else>
+        </if>
+
+        <ifdef property="host">
+            <then>
+                <echo message="ohhh var"/>
+            </then>
+        </ifdef>
+
+        <ifndef property="foo">
+            <then>
+                <echo message="coooooo"/>
+            </then>
+            <else>
+                <echo message="fooooo"/>
+            </else>
+        </ifndef>
+
+        <ifexist file="something.file">
+            <then>
+                <echo message="oh..."/>
+            </then>
+        </ifexist>
+
+        <ifexist dir="something.file">
+            <then>
+                <echo message="directory?"/>
+            </then>
+        </ifexist>
+    </target>
+</project>
