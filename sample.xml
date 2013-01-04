@@ -4,10 +4,25 @@
 -->
 <project name="sample" default="test" basedir=".">
     <path id="custom.antlibs">
-        <pathelement path="bin\antifs.jar"/>
+        <pathelement path="antifs.jar"/>
     </path>
     <taskdef resource="antifs.properties" classpathref="custom.antlibs"/>
     <target name="test">
+      <property name="country" value="HK"/>
+		
+        <tolowercase property="country"/>
+		<echo message="${country}"/>
+        <touppercase property="country"/>
+		<echo message="${country}"/>
+		
+	    <if arg1="foo" arg2="FOO" ignorecase="true">
+		    <isequal>
+			    <echo message="case ignored"/>
+			</isequal>
+			<else>
+			    <echo message="failed to ignore case"/>
+			</else>
+		</if>
         <if arg1="foo" arg2="wrong foo">
             <isequal>
                 <echo message="is equal"/>
