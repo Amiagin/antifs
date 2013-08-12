@@ -8,17 +8,27 @@
     </path>
     <taskdef resource="antifs.properties" classpathref="custom.antlibs"/>
     <target name="test">
-      <property name="country" value="HK"/>
+	    <property name="country" value="HK"/>
 		
         <tolowercase property="country"/>
 		<echo message="${country}"/>
         <touppercase property="country"/>
 		<echo message="${country}"/>
 		
-	    <if arg1="foo" arg2="FOO" ignorecase="true">
+	    <if arg1="foo" arg2="FO0" ignorecase="true">
 		    <isequal>
 			    <echo message="case ignored"/>
 			</isequal>
+			<elseif arg1="foo" arg2="fox">
+			    <then>
+			        <echo message="this must be else if"/>
+				</then>	 
+			</elseif>
+			<elseif arg1="foo" arg2="fos">
+			    <then>
+			        <echo message="else if? correct?"/>
+				</then>	 
+			</elseif>			
 			<else>
 			    <echo message="failed to ignore case"/>
 			</else>
@@ -72,6 +82,6 @@
             <then>
                 <echo message="directory?"/>
             </then>
-        </ifexist>
+        </ifexist>				
     </target>
 </project>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+  Sample/Test AntTask
+-->
+<project name="sample" default="test" basedir=".">
+    <path id="custom.antlibs">
+        <pathelement path="antifs.jar"/>
+    </path>
+    <taskdef resource="antifs.properties" classpathref="custom.antlibs"/>
+    <target name="test">
+	    <property name="country" value="HK"/>
+		
+        <tolowercase property="country"/>
+		
+		<switch input="foo">
+		    <case value="f00">
+			    <echo message="f00"/>
+				<echo message="Yeah!"/>
+			</case>
+			<case value="f99">
+			    <echo message="f99"/>                
+				<echo message="Yeah!"/>
+			</case>
+			<case value="foo">
+			    <echo message="foo"/>
+				<echo message="Yeah!"/>
+			</case>
+			<default>
+			    <echo message="default executed"/>
+			</default>
+		</switch>
+		
+		<if input="foo" equals="fee">
+		   <then>
+		       <echo message="foo is foo"/>
+		   </then>
+		   <elseif input="fee" equals="fee">
+		       <echo message="feee???"/>
+		   </elseif>
+		   <else>
+		       <echo message="foo is not foo"/>
+		   </else>
+		</if>				
+    </target>
+</project>
